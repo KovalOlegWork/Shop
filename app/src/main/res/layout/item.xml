@@ -26,6 +26,12 @@
             android:layout_margin="10dp"
             android:text="Name"
             android:textSize="40sp" />
+        <View
+            android:id="@+id/chosenStatus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="22dp"
+            tools:background="@drawable/empty_heart" />
 
 
     </LinearLayout>
