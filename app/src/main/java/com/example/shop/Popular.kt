@@ -1,5 +1,5 @@
 package com.example.shop
 
-class Popular(private val title: String, private val description: String, private val picUrl: String,
-    private val review: Int, private val score: Double, private val numberInCart: Int) {
+data class Popular(val title: String, val description: String, val picUrl: String,
+                   val review: Int, val score: Double, val price: Double) {
 }

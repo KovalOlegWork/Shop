@@ -330,7 +330,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textView23"
+                        android:id="@+id/minusCartBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="View All"
