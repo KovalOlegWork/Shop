@@ -36,6 +36,11 @@ android {
 }
 
 dependencies {
+    fun room_version() = "2.5.2"
+
+    implementation ("androidx.room:room-runtime:${room_version()}")
+    implementation("androidx.contentpager:contentpager:1.0.0")
+    annotationProcessor ("androidx.room:room-compiler:${room_version()}")
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.6.1")

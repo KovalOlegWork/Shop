@@ -1,5 +1,9 @@
 package com.example.shop
 
-data class Popular(val title: String, val description: String, val picUrl: String,
-                   val review: Int, val score: Double, val price: Double) {
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "items")
+data class Popular(@PrimaryKey(autoGenerate = true) val title: String, val description: String, val picUrl: Int,
+                   val review: Int, val score: Double, val price: Double, val id: Int) {
 }

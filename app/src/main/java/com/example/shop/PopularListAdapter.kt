@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -28,14 +29,13 @@ class PopularListAdapter(var context: ArrayList<Popular>) :
         holder.titleText.text = item.title
         holder.feeText.text = "$"+item.price.toString()
         holder.scoreText.text = ""+item.score.toString()
-        val drawableResourceId: Int = holder.itemView.resources.getIdentifier(items[position].picUrl,
-        "draweble", holder.itemView.context.packageName)
-        Glide.with(holder.itemView.context).load(drawableResourceId)
-            .transform(GranularRoundedCorners(30F, 30F, 30F, 30F))
-            .into(holder.pic)
+        holder.pic.setImageResource(item.picUrl)
         holder.itemView.setOnClickListener {
-            val intent: Intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra("object", items[position])
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            intent.putExtra("title", item.title)
+            intent.putExtra("price", item.price)
+            intent.putExtra("score", item.score)
+            intent.putExtra("picUrl", item.picUrl)
             holder.itemView.context.startActivity(intent)
         }
     }
@@ -44,6 +44,6 @@ class PopularListAdapter(var context: ArrayList<Popular>) :
         val titleText = itemView.findViewById<TextView>(R.id.titleText)
         val feeText = itemView.findViewById<TextView>(R.id.feeText)
         val scoreText = itemView.findViewById<TextView>(R.id.scoreText)
-        val pic = itemView.findViewById<TextView>(R.id.pic)
+        val pic = itemView.findViewById<ImageView>(R.id.pic)
     }
 }
