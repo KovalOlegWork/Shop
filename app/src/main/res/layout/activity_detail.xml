@@ -67,7 +67,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
                 <ImageView
-                    android:id="@+id/foodPic"
+                    android:id="@+id/itemPic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -190,7 +190,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp" />
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/payButton"
+                android:id="@+id/addToCartBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Buy"

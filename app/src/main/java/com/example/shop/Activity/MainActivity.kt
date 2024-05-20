@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         init()
+        bottom_navigation()
+    }
+
+    private fun bottom_navigation(){
+        val homeBtn: LinearLayout = findViewById(R.id.homeBtn)
+        val Btn: LinearLayout = findViewById(R.id.cartBtn)
+        homeBtn.setOnClickListener{
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
     private fun init(){
         val items = ArrayList<Popular>()
