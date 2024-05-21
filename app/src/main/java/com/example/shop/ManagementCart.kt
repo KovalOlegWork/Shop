@@ -19,7 +19,7 @@ class ManagementCart(private var context: Context, private var tinyDB: TinyDB) {
             }
         }
         if (existAlready) {
-            listPop.get(n).setNumberInCart(item.numberInCart)
+            listPop.get(n).numberInCart = item.numberInCart
         } else {
             listPop.add(item)
         }
@@ -27,7 +27,7 @@ class ManagementCart(private var context: Context, private var tinyDB: TinyDB) {
         Toast.makeText(context, "Added to your Cart", Toast.LENGTH_SHORT).show()
     }
 
-    private fun getListCard(): ArrayList<Popular> {
+    fun getListCard(): ArrayList<Popular> {
         return tinyDB.getListObject("CartList")
     }
 
@@ -35,13 +35,13 @@ class ManagementCart(private var context: Context, private var tinyDB: TinyDB) {
         if (listItem.get(position).numberInCart == 1){
             listItem.removeAt(position)
         } else  {
-            listItem.get(position).setNumberInCart(listItem.get(position).numberInCart - 1)
+            listItem.get(position).numberInCart = listItem.get(position).numberInCart - 1
         }
         tinyDB.putListObject("CartList", listItem)
         changeNumberItemListener.change()
     }
     fun plusNumberItem(listItem: ArrayList<Popular>, position: Int, changeNumberItemListener: ChangeNumberItemListener) {
-        listItem.get(position).setNumberInCart(listItem.get(position).numberInCart + 1)
+        listItem.get(position).numberInCart = listItem.get(position).numberInCart + 1
         tinyDB.putListObject("CartList", listItem)
         changeNumberItemListener.change()
     }

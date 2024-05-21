@@ -1,5 +1,6 @@
 package com.example.shop.Activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -17,12 +18,14 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var descriptionText: TextView
     private lateinit var reviewText: TextView
     private lateinit var scoreText: TextView
-    private lateinit var picFood: ImageView
+    private lateinit var picItem: ImageView
+    private lateinit var backBtn: ImageView
     private lateinit var objekt: Popular
     private lateinit var managementCart: ManagementCart
     private var numberOrder: Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        managementCart = ManagementCart(this)
         setContentView(R.layout.activity_detail)
         initView()
 
@@ -30,18 +33,21 @@ class DetailActivity : AppCompatActivity() {
 
     private fun getBundle(){
         objekt = (Popular) getIntent().getSerializableExtra("object")
-        val drawableResourceId: Int = this.resources.getIdentifier(objekt.picUrl, "drawable", this.packageName)
+        val drawableResourceId: Int = this.resources.getIdentifier(objekt.picUrl.toString(), "drawable", this.packageName)
         Glide.with(this)
             .load(drawableResourceId)
-            .into(picFood)
+            .into(picItem)
         titleText.setText(objekt.title)
         feeText.setText("$"+objekt.price)
         descriptionText.setText(objekt.description)
         reviewText.setText(""+objekt.review)
         scoreText.setText(""+objekt.score)
         addToCartBtn.setOnClickListener{
-            objekt.setNumberInCart(numberOrder)
+            objekt.numberInCart = numberOrder
             managementCart.insertFood(objekt)
+        }
+        backBtn.setOnClickListener{
+            finish()
         }
     }
 
@@ -50,7 +56,8 @@ class DetailActivity : AppCompatActivity() {
         feeText = findViewById(R.id.priceText)
         titleText = findViewById(R.id.titleText)
         descriptionText = findViewById(R.id.descriptionText)
-        picFood = findViewById(R.id.itemPic)
+        picItem = findViewById(R.id.itemPic)
+        backBtn = findViewById(R.id.backBtn)
         reviewText = findViewById(R.id.reviewText)
         scoreText = findViewById(R.id.scoreText)
     }

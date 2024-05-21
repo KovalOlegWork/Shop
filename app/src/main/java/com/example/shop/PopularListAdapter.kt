@@ -29,7 +29,15 @@ class PopularListAdapter(var context: ArrayList<Popular>) :
         holder.titleText.text = item.title
         holder.feeText.text = "$"+item.price.toString()
         holder.scoreText.text = ""+item.score.toString()
-        holder.pic.setImageResource(item.picUrl)
+
+        val drawableResourceId: Int = holder.itemView.context.resources
+            .getIdentifier(context.get(position).picUrl.toString(), "drawable", holder.itemView.context.packageName)
+
+        Glide.with(holder.itemView.context)
+            .load(drawableResourceId)
+            .transform(GranularRoundedCorners(30f, 30f, 30f, 30f))
+            .into(holder.pic)
+
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
             intent.putExtra("title", item.title)

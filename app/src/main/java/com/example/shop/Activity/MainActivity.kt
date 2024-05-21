@@ -28,9 +28,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun bottom_navigation(){
         val homeBtn: LinearLayout = findViewById(R.id.homeBtn)
-        val Btn: LinearLayout = findViewById(R.id.cartBtn)
+        val cartBtn: LinearLayout = findViewById(R.id.cartBtn)
         homeBtn.setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
+        }
+        cartBtn.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
         }
     }
     private fun init(){
