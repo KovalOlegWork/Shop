@@ -4,9 +4,8 @@ import android.content.Context
 import android.widget.Toast
 import com.example.shop.Popular
 import com.example.shop.TinyDB
-import java.text.FieldPosition
 
-class ManagementCart(private var context: Context, private var tinyDB: TinyDB) {
+class ManagementCart(private var context: Context, private var tinyDB: TinyDB = TinyDB(context)) {
     fun insertFood(item: Popular) {
         val listPop: ArrayList<Popular> = getListCard()
         var existAlready: Boolean = false

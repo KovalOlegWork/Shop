@@ -200,7 +200,7 @@ class TinyDB(private val context: Context) {
         return try {
             number!!.toDouble()
         } catch (e: NumberFormatException) {
-            0
+            0.0
         }
     }
 
@@ -275,12 +275,12 @@ class TinyDB(private val context: Context) {
         return newList
     }
 
-    fun getListObject(key: String?, mClass: Class<*>?): ArrayList<Any> {
+    fun getListObject(key: String?): ArrayList<Popular> {
         val gson = Gson()
         val objStrings = getListString(key)
-        val objects = ArrayList<Any>()
+        val objects = ArrayList<Popular>()
         for (jObjString in objStrings) {
-            val value = gson.fromJson(jObjString, mClass)
+            val value = gson.fromJson(jObjString, Popular::class.java)
             objects.add(value)
         }
         return objects
@@ -427,7 +427,7 @@ class TinyDB(private val context: Context) {
         putString(key, gson.toJson(obj))
     }
 
-    fun putListObject(key: String?, objArray: ArrayList<Any?>) {
+    fun putListObject(key: String?, objArray: ArrayList<Popular>) {
         checkForNullKey(key)
         val gson = Gson()
         val objStrings = ArrayList<String>()

@@ -2,15 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="175dp"
-    android:background="@drawable/grey_background"
-    android:elevation="3dp"
+    android:layout_width="140dp"
+    android:layout_height="240dp"
     android:layout_margin="8dp"
-    android:layout_height="240dp">
+    android:background="@drawable/grey_background"
+    android:elevation="3dp">
 
     <ImageView
         android:id="@+id/pic"
-        android:layout_width="175dp"
+        android:layout_width="140dp"
         android:layout_height="155dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +20,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="55dp"
         android:layout_height="22dp"
-        android:background="@drawable/white_background"
         android:layout_marginTop="16dp"
+        android:background="@drawable/white_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -60,8 +60,8 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="title"
         android:layout_margin="8dp"
+        android:text="title"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view5" />

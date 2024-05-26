@@ -11,9 +11,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
 import com.example.shop.Activity.DetailActivity
 
-class PopularListAdapter(var context: ArrayList<Popular>) :
+class PopularListAdapter(var items: ArrayList<Popular>) :
     RecyclerView.Adapter<PopularListAdapter.ViewHolder>() {
-    lateinit var items: ArrayList<Popular>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.pop_list, parent, false)
@@ -31,7 +30,7 @@ class PopularListAdapter(var context: ArrayList<Popular>) :
         holder.scoreText.text = ""+item.score.toString()
 
         val drawableResourceId: Int = holder.itemView.context.resources
-            .getIdentifier(context.get(position).picUrl.toString(), "drawable", holder.itemView.context.packageName)
+            .getIdentifier(items.get(position).picUrl.toString(), "drawable", holder.itemView.context.packageName)
 
         Glide.with(holder.itemView.context)
             .load(drawableResourceId)
@@ -40,10 +39,10 @@ class PopularListAdapter(var context: ArrayList<Popular>) :
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra("title", item.title)
-            intent.putExtra("price", item.price)
-            intent.putExtra("score", item.score)
-            intent.putExtra("picUrl", item.picUrl)
+            intent.putExtra(DetailActivity.TITLE, item.title)
+            intent.putExtra(DetailActivity.PRICE, item.price)
+            intent.putExtra(DetailActivity.SCORE, item.score)
+            intent.putExtra(DetailActivity.PIC_URL, item.picUrl)
             holder.itemView.context.startActivity(intent)
         }
     }

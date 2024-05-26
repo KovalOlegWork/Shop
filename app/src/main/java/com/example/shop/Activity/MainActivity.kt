@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         val homeBtn: LinearLayout = findViewById(R.id.homeBtn)
         val cartBtn: LinearLayout = findViewById(R.id.cartBtn)
         homeBtn.setOnClickListener{
-            startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
         cartBtn.setOnClickListener {
             startActivity(Intent(this, CartActivity::class.java))
@@ -40,14 +41,14 @@ class MainActivity : AppCompatActivity() {
         val items = ArrayList<Popular>()
         val imageResource = R.drawable.pic1
         val drawable = ContextCompat.getDrawable(this, imageResource)
-        items.add(Popular("MacBook Pro 13 M2 chip", "", R.drawable.pic1, 15, 4.0, 500.0))
-        items.add(Popular("Ps-5 Digital", "", R.drawable.pic2, 10, 4.5, 450.0))
-        items.add(Popular("Iphone 14", "", R.drawable.pic3, 13, 4.2, 800.0))
-        recyclerViewPopular = findViewById(R.id.rv1)
+        items.add(Popular("MacBook Pro 13 M2 chip", "", R.drawable.pic1, 15, 4.0, 500.0, 1))
+        items.add(Popular("Ps-5 Digital", "", R.drawable.pic2, 10, 4.5, 450.0, 2))
+        items.add(Popular("Iphone 14", "", R.drawable.pic3, 13, 4.2, 800.0, 3))
 
-        recyclerViewPopular.adapter = adapterPopular
         adapterPopular = PopularListAdapter(items)
 
+        recyclerViewPopular = findViewById(R.id.rv1)
+        recyclerViewPopular.adapter = adapterPopular
     }
 
 }

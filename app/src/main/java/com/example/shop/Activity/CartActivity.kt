@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,7 @@ import com.example.shop.CartListAdapter
 import com.example.shop.R
 
 class CartActivity : AppCompatActivity() {
-    private lateinit var adapter: RecyclerView.Adapter
+    private lateinit var adapter: CartListAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var managementCart: ManagementCart
     private lateinit var totalFeeText: TextView
@@ -22,7 +23,7 @@ class CartActivity : AppCompatActivity() {
     private lateinit var emptyText: TextView
     private var tax: Double = 0.0
     private lateinit var scrollView: ScrollView
-    private lateinit var backBtn: Button
+    private lateinit var backBtn: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)

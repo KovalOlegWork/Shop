@@ -28,20 +28,23 @@ class DetailActivity : AppCompatActivity() {
         managementCart = ManagementCart(this)
         setContentView(R.layout.activity_detail)
         initView()
-
+        getBundle()
     }
 
     private fun getBundle(){
-        objekt = (Popular) getIntent().getSerializableExtra("object")
-        val drawableResourceId: Int = this.resources.getIdentifier(objekt.picUrl.toString(), "drawable", this.packageName)
+        val title = intent.getStringExtra(TITLE)
+        val price = intent.getStringExtra(PRICE)
+        val score = intent.getStringExtra(SCORE)
+        val picUrl = intent.getStringExtra(PIC_URL)
+        val drawableResourceId: Int = this.resources.getIdentifier(picUrl.toString(), "drawable", this.packageName)
         Glide.with(this)
             .load(drawableResourceId)
             .into(picItem)
-        titleText.setText(objekt.title)
-        feeText.setText("$"+objekt.price)
-        descriptionText.setText(objekt.description)
-        reviewText.setText(""+objekt.review)
-        scoreText.setText(""+objekt.score)
+        titleText.setText(title)
+        feeText.setText("$"+price)
+        descriptionText.setText("")
+        reviewText.setText("5")
+        scoreText.setText(""+score)
         addToCartBtn.setOnClickListener{
             objekt.numberInCart = numberOrder
             managementCart.insertFood(objekt)
@@ -60,5 +63,12 @@ class DetailActivity : AppCompatActivity() {
         backBtn = findViewById(R.id.backBtn)
         reviewText = findViewById(R.id.reviewText)
         scoreText = findViewById(R.id.scoreText)
+    }
+    companion object {
+        const val TITLE = "title"
+        const val PRICE = "price"
+        const val SCORE = "score"
+        const val PIC_URL = "picUrl"
+
     }
 }
